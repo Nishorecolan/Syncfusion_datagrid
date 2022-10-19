@@ -497,7 +497,7 @@ class SfDataPagerState extends State<SfDataPager> {
 
     /// Set page count in DataGridSource.
     _setPageCountInDataGridSource(widget.pageCount);
-    _defaultPagerDimension = Size(300.0, _getDefaultDimensionHeight());
+    // _defaultPagerDimension = Size(300.0, _getDefaultDimensionHeight());
     _scrollController = ScrollController()
       ..addListener(_handleScrollPositionChanged);
     _itemGenerator = _DataPagerItemGenerator();
@@ -1640,6 +1640,8 @@ class SfDataPagerState extends State<SfDataPager> {
 
   @override
   Widget build(BuildContext context) {
+    _defaultPagerDimension = Size(MediaQuery.of(context).size.width < 400 ? 170 : 300, _getDefaultDimensionHeight());
+
     return Card(
       elevation: 0.0,
       color: _dataPagerThemeHelper!.backgroundColor,
