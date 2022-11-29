@@ -1515,7 +1515,7 @@ class SfDataPagerState extends State<SfDataPager> {
       labelInfo,
       textDirection: _textDirection,
       style: TextStyle(
-          fontSize: _dataPagerThemeHelper!.itemTextStyle.fontSize,
+          fontSize: _pageCount > 100 ?13:_dataPagerThemeHelper!.itemTextStyle.fontSize,
           fontWeight: _dataPagerThemeHelper!.itemTextStyle.fontWeight,
           fontFamily: _dataPagerThemeHelper!.itemTextStyle.fontFamily,
           color: _dataPagerThemeHelper!.itemTextStyle.color),
