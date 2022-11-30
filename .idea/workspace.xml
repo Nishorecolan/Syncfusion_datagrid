@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da2cae9a-e6c4-4e6a-a86e-9ede95876eb9" name="Changes" comment="Customized width">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="da2cae9a-e6c4-4e6a-a86e-9ede95876eb9" name="Changes" comment="Label changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +73,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669700218386</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Label changes">
+      <created>1669736044464</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669736044464</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Label changes">
+      <created>1669736069095</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669736069095</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -92,6 +104,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding Custom Data Grid" />
     <MESSAGE value="Customized width" />
-    <option name="LAST_COMMIT_MESSAGE" value="Customized width" />
+    <MESSAGE value="Label changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Label changes" />
   </component>
 </project>
