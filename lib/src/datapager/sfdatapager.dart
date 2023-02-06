@@ -249,6 +249,7 @@ class SfDataPager extends StatefulWidget {
     this.itemPadding = const EdgeInsets.all(5),
     this.navigationItemHeight = 50.0,
     this.navigationItemWidth = 50.0,
+    required this.isMobileSize,
     this.firstPageItemVisible = true,
     this.lastPageItemVisible = true,
     this.nextPageItemVisible = true,
@@ -325,6 +326,7 @@ class SfDataPager extends StatefulWidget {
   ///
   /// Defaults to 50.0
   final double navigationItemWidth;
+  final double isMobileSize;
 
   /// Determines the direction of the data pager whether vertical or
   /// horizontal.
@@ -409,7 +411,7 @@ class SfDataPagerState extends State<SfDataPager> {
   static const Size _dropdownSize = Size(82, 36);
   static const EdgeInsets __rowsPerPageLabelPadding = EdgeInsets.all(5);
   static const Size _defaultPagerLabelDimension = Size(100.0, 50.0);
-  static const double _kMobileViewWidthOnWeb = 767.0;
+  static const double _kMobileViewWidthOnWeb = 500.0;
 
   late _DataPagerItemGenerator _itemGenerator;
   ScrollController? _scrollController;
@@ -417,7 +419,7 @@ class SfDataPagerState extends State<SfDataPager> {
   SfDataPagerThemeData? _dataPagerThemeData;
   ImageConfiguration? _imageConfiguration;
   late SfLocalizations _localization;
-
+  bool data= true;
   int _pageCount = 0;
   double _scrollViewPortSize = 0.0;
   double _headerExtent = 0.0;
@@ -1671,50 +1673,60 @@ class SfDataPagerState extends State<SfDataPager> {
         .of(context)
         .size
         .width < 400 ? 170 : 400, _getDefaultDimensionHeight());
-    return Card(
-      elevation: 0.0,
-      color: _dataPagerThemeHelper!.backgroundColor,
-      child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraint) {
-            _updateConstraintChanged(constraint);
-            if (_currentPageIndex > _pageCount) {
-              _currentPageIndex = _pageCount - 1;
-            }
-            if (_isDesktop && widget.direction == Axis.horizontal) {
-              final List<Widget> children = <Widget>[];
+    return Column(
+      children: [
+        Card(
+          elevation: 0.0,
+          color: _dataPagerThemeHelper!.backgroundColor,
+          child: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraint) {
+                _updateConstraintChanged(constraint);
+                if (_currentPageIndex > _pageCount) {
+                  _currentPageIndex = _pageCount - 1;
+                }
+                if (_isDesktop && widget.direction == Axis.horizontal) {
+                  final List<Widget> children = <Widget>[];
 
-              _buildDataPagerWithLabel(constraint, children);
+                  _buildDataPagerWithLabel(constraint, children);
 
-              _isDirty = false;
-              return constraint.maxWidth >= _kMobileViewWidthOnWeb
-                  ? SizedBox(
-                width: _getTotalDataPagerWidth(constraint),
-                height: _getTotalDataPagerHeight(constraint),
-                child: _getChildrenBasedOnDirection(children),
-              )
-                  : SizedBox(
-                child: SingleChildScrollView(
-                    scrollDirection: widget.direction,
-                    child: _getChildrenBasedOnDirection(children)),
-              );
-            } else {
-              final Widget dataPager = _buildDataPager(constraint);
-              _isDirty = false;
-              if (widget.onRowsPerPageChanged != null &&
-                  widget.direction == Axis.horizontal) {
-                return SingleChildScrollView(
-                  scrollDirection: widget.direction,
-                  child: dataPager,
-                );
-              } else {
-                return SizedBox(
-                    width: _getDataPagerWidth(),
-                    height: _getDataPagerHeight(),
-                    child: dataPager);
-              }
-            }
-          }),
+                  _isDirty = false;
+                  return constraint.maxWidth >= _kMobileViewWidthOnWeb
+                      ? SizedBox(
+                    width: _getTotalDataPagerWidth(constraint),
+                    height: _getTotalDataPagerHeight(constraint),
+                    child: _getChildrenBasedOnDirection(children),
+                  )
+                      : SizedBox(
+                    child: SingleChildScrollView(
+                        scrollDirection: widget.direction,
+                        child: _getChildrenBasedOnDirection(children)),
+                  );
+                } else {
+                  final Widget dataPager = _buildDataPager(constraint);
+                  _isDirty = false;
+                  if (widget.onRowsPerPageChanged != null &&
+                      widget.direction == Axis.horizontal) {
+                    return SingleChildScrollView(
+                      scrollDirection: widget.direction,
+                      child: dataPager,
+                    );
+                  } else {
+                    return SizedBox(
+                        width: _getDataPagerWidth(),
+                        height: _getDataPagerHeight(),
+                        child: dataPager);
+                  }
+                }
+              }),
+        ),
+        MediaQuery.of(context).size.width < widget.isMobileSize ? Align(
+          alignment: Alignment.centerRight,
+          child: _buildDataPagerLabel(),
+        ):SizedBox()
+
+      ],
     );
+
   }
 
   @override
