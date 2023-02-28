@@ -1391,23 +1391,7 @@ class SfDataPagerState extends State<SfDataPager> {
 
   // ScrollView Builder
   Widget _buildScrollView() {
-    print("e.key");
     List? dataBase;
-    print("dataBase");
-    print(_itemGenerator._items.length);
-    //print(dataBase);
-    // List<_DataPagerItemRenderObject>.from(_itemGenerator._items
-    //     .map<_DataPagerItemRenderObject>(
-    //         (element) {
-    //           dataBase!.add(element);
-    //         },
-    // ));
-    // print(dataBase);
-    // print("_itemGenerator ==> }");
-    // _itemGenerator._items.map((_ScrollableDataPagerItem e) {
-    //    print(e.key);
-    //    print("e.key2");
-    //  });
     return SingleChildScrollView(
         scrollDirection: widget.direction,
         clipBehavior: Clip.antiAlias,
